@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HeroResource" load_steps=3 format=3 uid="uid://dqa14upfqim6n"]
+
+[ext_resource type="Script" path="res://Scripts/HeroResource.gd" id="1_1gbld"]
+[ext_resource type="Texture2D" uid="uid://ch2kl0e53esjl" path="res://Sprites/HeroKnight.png" id="1_1k37i"]
+
+[resource]
+script = ExtResource("1_1gbld")
+Name = "Knight"
+HP = 200
+MS = 150.0
+Special = "DamageResist"
+Value = 0.5
+Sprite = ExtResource("1_1k37i")

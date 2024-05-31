@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3rc0q3ap1hsd"]
+
+[ext_resource type="Texture2D" uid="uid://ch2kl0e53esjl" path="res://Sprites/HeroKnight.png" id="1_bpj32"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ray8t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eww27"]
+
+[sub_resource type="Animation" id="Animation_ngoku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4fgj1"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_4cqhm"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_jubp5"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rao68"]
+_data = {
+"RESET": SubResource("Animation_ngoku"),
+"death": SubResource("Animation_4fgj1"),
+"idle": SubResource("Animation_4cqhm"),
+"walk": SubResource("Animation_jubp5")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_ray8t")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_bpj32")
+offset = Vector2(0, -32)
+hframes = 6
+vframes = 3
+
+[node name="Hands" type="Node2D" parent="Sprite"]
+
+[node name="MainHand" type="Node2D" parent="Sprite/Hands"]
+position = Vector2(-7, -10)
+
+[node name="Offhand" type="Node2D" parent="Sprite/Hands"]
+modulate = Color(0.49, 0.49, 0.49, 1)
+z_index = -1
+position = Vector2(6, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_eww27")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rao68")
+}

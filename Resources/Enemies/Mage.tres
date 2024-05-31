@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://b7dupjoct1rqw"]
+
+[ext_resource type="Texture2D" uid="uid://lqkvmpfltk7q" path="res://Sprites/SkeletonMage.png" id="1_gfxag"]
+[ext_resource type="Script" path="res://Scripts/EnemyResource.gd" id="2_n44qa"]
+
+[resource]
+script = ExtResource("2_n44qa")
+Name = "Mage"
+HP = 50
+MS = 100.0
+Sprite = ExtResource("1_gfxag")
+WeaponName = "Staff"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://thaigueeogu7"]
+
+[ext_resource type="Texture2D" uid="uid://dn3gmqux054ga" path="res://Sprites/SkeletonWarrior.png" id="1_c4hbl"]
+[ext_resource type="Script" path="res://Scripts/EnemyResource.gd" id="2_xn1in"]
+
+[resource]
+script = ExtResource("2_xn1in")
+Name = "Warrior"
+HP = 150
+MS = 100.0
+Sprite = ExtResource("1_c4hbl")
+WeaponName = "Sword"

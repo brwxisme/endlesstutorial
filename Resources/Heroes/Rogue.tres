@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HeroResource" load_steps=3 format=3 uid="uid://co64hyo3lfyqt"]
+
+[ext_resource type="Texture2D" uid="uid://cocv6si5r31rh" path="res://Sprites/HeroRogue.png" id="1_td3gq"]
+[ext_resource type="Script" path="res://Scripts/HeroResource.gd" id="2_v2s8o"]
+
+[resource]
+script = ExtResource("2_v2s8o")
+Name = "Rogue"
+HP = 100
+MS = 200.0
+Special = "CooldownReduce"
+Value = 0.5
+Sprite = ExtResource("1_td3gq")

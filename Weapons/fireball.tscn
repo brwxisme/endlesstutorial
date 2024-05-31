@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs7r3hinoo12r"]
+
+[ext_resource type="Script" path="res://Scripts/fireball.gd" id="1_6n1o2"]
+[ext_resource type="Texture2D" uid="uid://dikdwk2l67lgp" path="res://Sprites/64Circle.png" id="1_cgou4"]
+
+[sub_resource type="Curve" id="Curve_j50th"]
+_data = [Vector2(0.134831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5ydmv"]
+offsets = PackedFloat32Array(0, 0.326667, 1)
+colors = PackedColorArray(0.98, 0.882, 0, 1, 0.86, 0.0774, 0.0774, 1, 0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xa1nw"]
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_6n1o2")
+
+[node name="64Circle" type="Sprite2D" parent="."]
+self_modulate = Color(0.980392, 0.882353, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_cgou4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -363.64
+angular_velocity_max = 247.27
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_j50th")
+color_ramp = SubResource("Gradient_5ydmv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_xa1nw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
